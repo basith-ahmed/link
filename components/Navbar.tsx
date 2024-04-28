@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import MobileNav from "./MobileNav";
 
 export default function Navbar() {
     return (
@@ -17,7 +18,7 @@ export default function Navbar() {
             <div className="flex-between gap-5">
                 {/*clerk user management*/}
 
-                Mobile Nav
+                <MobileNav />
             </div>
         </nav>
     )
