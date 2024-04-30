@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Link",
-  description: "Web conferencing app for proffesionals",
+  description: "Web Conferencing",
 };
 
 export default function RootLayout({
@@ -17,8 +17,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider>
-      <body className={`${inter.className} bg-dark-2`}>{children}</body>
+      <ClerkProvider
+        appearance={{
+          variables: {
+            colorText: "#fff",
+            colorPrimary: "#0E78F9",
+            colorBackground: "#1C1F2E",
+            colorInputBackground: "#252A41",
+            colorInputText: "#fff",
+          },
+          layout: {
+            socialButtonsVariant: "iconButton",
+            logoImageUrl: "/icons/yoom-logo.svg",
+          }
+        }}
+      >
+        <body className={`${inter.className} bg-dark-2`}>{children}</body>
       </ClerkProvider>
     </html>
   );
