@@ -1,3 +1,5 @@
+import MeetingTypeList from "@/components/MeetingTypeList";
+
 export default function Home() {
 
   const now = new Date()
@@ -21,6 +23,7 @@ const date = new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', 
           </div>
         </div>
       </div>
+      <MeetingTypeList />
     </section>
   );
 }
