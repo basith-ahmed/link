@@ -1,6 +1,15 @@
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
+import { Metadata } from "next";
 import { ReactNode } from "react";
+
+export const metadata: Metadata = {
+  title: "Link",
+  description: "Web Conferencing",
+  // icons: {
+  //   icon: '/icon/logo.svg'
+  // }
+};
 
 export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
