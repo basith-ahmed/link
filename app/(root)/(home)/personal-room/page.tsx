@@ -56,31 +56,37 @@ const PersonalRoom = () => {
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
 
   return (
-    <section className="flex size-full flex-col gap-10 text-white">
-      <h1 className="text-xl font-bold lg:text-3xl">Personal Meeting Room</h1>
-      <div className="flex w-full flex-col gap-8 xl:max-w-[900px]">
-        <Table title="Topic" description={`${user?.username}'s Meeting Room`} />
-        <Table title="Meeting ID" description={meetingId!} />
-        <Table title="Invite Link" description={meetingLink} />
+    <div className="flex h-screen w-full">
+      <div className="flex-1 bg-gray-50 dark:bg-gray-950 p-6 flex flex-col gap-6">
+        <div className="text-2xl font-semibold">Personal Meeting Room</div>
+        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-6 flex flex-col gap-8 xl:max-w-[900px]">
+          <div className="flex flex-col gap-4">
+            <Table title="Topic" description={`${user?.username}'s Meeting Room`} />
+            <Table title="Meeting ID" description={meetingId!} />
+            <Table title="Invite Link" description={meetingLink} />
+          </div>
+          <div className="flex gap-5">
+            <Button className="bg-blue-500 hover:bg-blue-600 text-white" onClick={startRoom}>
+              Start Meeting
+            </Button>
+            <Button
+              variant="outline"
+              className="text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white"
+              onClick={() => {
+                navigator.clipboard.writeText(meetingLink);
+                toast({
+                  title: "Link Copied",
+                });
+              }}
+            >
+              Copy Invitation
+            </Button>
+          </div>
+        </div>
       </div>
-      <div className="flex gap-5">
-        <Button className="bg-blue-1" onClick={startRoom}>
-          Start Meeting
-        </Button>
-        <Button
-          className="bg-dark-3"
-          onClick={() => {
-            navigator.clipboard.writeText(meetingLink);
-            toast({
-              title: "Link Copied",
-            });
-          }}
-        >
-          Copy Invitation
-        </Button>
-      </div>
-    </section>
+    </div>
   );
+  
 };
 
 export default PersonalRoom;
